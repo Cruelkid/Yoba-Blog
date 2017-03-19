@@ -9,6 +9,7 @@ class SignupForm extends Model {
 	public $name;
 	public $email;
 	public $password;
+	public $confirmPass;
 
 	public function rules() {
 
@@ -23,6 +24,8 @@ class SignupForm extends Model {
 			['email', 'unique', 'targetClass' => 'app\models\User', 'message' => 'This email has already been taken.'],
 			['password', 'required'],
 			['password', 'string', 'min' => 4],
+			['confirmPass', 'required'],
+			['confirmPass', 'compare', 'compareAttribute' => 'password'],
 		];
 
 	}
@@ -39,6 +42,15 @@ class SignupForm extends Model {
 		$user->setPassword($this->password);
 		$user->generateAuthKey();
 		return $user->save() ? $user : null;
+
+	}
+
+	public function attributeLabels() {
+
+		return [
+			'confirmPass'=>'Password confirmation',
+			'name'=>'Username',
+		]; 
 
 	}
 
