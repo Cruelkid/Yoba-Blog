@@ -14,7 +14,6 @@ use yii\web\IdentityInterface;
  * @property string $password_hash
  * @property string $password (write-only)
  * @property string $email
- * @property string $access_token
  * @property string $auth_key
  *
  * @property Comment[] $comment
@@ -41,7 +40,7 @@ class User extends ActiveRecord implements IdentityInterface
             [['name', 'password_hash', 'email'], 'required'],
             [['name', 'email'], 'string', 'max' => 255],
             [['password_hash'], 'string', 'max' => 32],
-            [['access_token', 'auth_key'], 'safe'],
+            [['auth_key'], 'safe'],
 
         ];
     }
@@ -84,7 +83,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
 
     public static function findIdentityByAccessToken($token, $type = null) {
-        return self::findOne(['access_token' => $token]);
+        return null;
     }
 
     public function getId() {
