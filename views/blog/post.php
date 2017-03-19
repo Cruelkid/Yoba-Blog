@@ -23,6 +23,6 @@ $this->title = $model->title;
 				<?php $form = ActiveForm::begin(); ?>
 					<?= $form->field($commentForm, 'title')->textInput(); ?>
 					<?= $form->field($commentForm, 'body')->textarea(); ?>
-					<input type="submit" name="submit" value="Comment">
+					<input type="submit" name="comment" value="Comment">
 				<?php ActiveForm::end(); ?>
 			<?php endif; ?>

@@ -30,7 +30,7 @@ $this->title = 'Yoba Blog';
 		<?php $form = ActiveForm::begin(); ?>
 			<?= $form->field($postForm, 'title')->textInput(); ?>
 			<?= $form->field($postForm, 'body')->textarea(); ?>
-			<input type="submit" name="submit" value="Post">
+			<input type="submit" name="post" value="Post">
 		<?php ActiveForm::end(); ?>
 	<?php endif; ?>
 </div>

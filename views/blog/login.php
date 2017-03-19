@@ -7,6 +7,6 @@
 	<?= $form->field($loginForm, 'password')->passwordInput(); ?>
 	<?= $form->field($loginForm, 'rememberMe')->checkbox(); ?>
 
-	<input type="submit" name="submit" value="Login">
+	<input type="submit" name="login" value="Login">
 
 <?php ActiveForm::end(); ?>
