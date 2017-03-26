@@ -1,5 +1,7 @@
 <?php
+use app\models\Comment;
 use yii\bootstrap\ActiveForm;
+use yii\helpers\Html;
 $this->title = $model->title;
 ?>
 <div class="post">
@@ -8,21 +10,10 @@ $this->title = $model->title;
 	<div class="text"><?= $model->body; ?></div>
 	<div class="timestamp">at <?= $model->created_at; ?></div>
 </div>
-		<div class="comments">
-			<?php foreach ($model->comments as $comment): ?>
-				<div class="comment">
-					<div class="comment-title"><?= $comment->title; ?></div>
-					<div class="comment-author">by <?= $comment->user->name ?></div>
-					<div class="comment-body"><?= $comment->body; ?></div>
-					<div class="comment-timestamp">at <?= $comment->created_at; ?></div>
-				</div>
-			<?php endforeach; ?>
-			</div>
-			<?php if(!empty($commentForm)): ?>
-				<h1><center>Please enter your comment</center></h1>
-				<?php $form = ActiveForm::begin(); ?>
-					<?= $form->field($commentForm, 'title')->textInput(); ?>
-					<?= $form->field($commentForm, 'body')->textarea(); ?>
-					<input type="submit" name="comment" value="Comment">
-				<?php ActiveForm::end(); ?>
-			<?php endif; ?>
+<?= $this->render("_comments", ['comments' => $model->comments]) ?>
+<?php if(!Yii::$app->user->isGuest): ?>
+	<?php
+		$commentForm = new Comment();
+	?>
+	<?= $this->render("_commentForm", ['commentForm' => $commentForm]) ?>
+<?php endif; ?>

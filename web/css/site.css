@@ -165,3 +165,11 @@ a.desc:after {
     text-align: right;
     font-style: italic;
 }
+
+.subcomments {
+    padding-left: 10px; 
+}
+
+.comment-form {
+    display: none;
+}

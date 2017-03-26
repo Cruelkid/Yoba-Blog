@@ -71,7 +71,6 @@ class BlogController extends \yii\web\Controller
         }    
         return $this->render('post', [
             'model' => $model,
-            'commentForm' => $comment,
             ]);            
     }
 

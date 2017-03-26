@@ -60,7 +60,8 @@ class Post extends \yii\db\ActiveRecord
      */
     public function getComments()
     {
-        return $this->hasMany(Comment::className(), ['post_id' => 'id']);
+        return $this->hasMany(Comment::className(), ['post_id' => 'id'])
+            ->where(['parent_id' => NULL]);
     }
 
     /**
